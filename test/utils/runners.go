@@ -115,7 +115,7 @@ type RCConfig struct {
 	Affinity                      *v1.Affinity
 	Client                        clientset.Interface
 	ScalesGetter                  scaleclient.ScalesGetter
-	Image                         []string
+	Image                         string
 	Command                       []string
 	Name                          string
 	Namespace                     string
@@ -335,7 +335,7 @@ func (config *DeploymentConfig) create() error {
 					Containers: []v1.Container{
 						{
 							Name:      config.Name,
-							Image:     config.Image[0],
+							Image:     config.Image,
 							Command:   config.Command,
 							Ports:     []v1.ContainerPort{{ContainerPort: 80}},
 							Lifecycle: config.Lifecycle,
@@ -421,7 +421,7 @@ func (config *ReplicaSetConfig) create() error {
 					Containers: []v1.Container{
 						{
 							Name:      config.Name,
-							Image:     config.Image[0],
+							Image:     config.Image,
 							Command:   config.Command,
 							Ports:     []v1.ContainerPort{{ContainerPort: 80}},
 							Lifecycle: config.Lifecycle,
@@ -499,7 +499,7 @@ func (config *JobConfig) create() error {
 					Containers: []v1.Container{
 						{
 							Name:      config.Name,
-							Image:     config.Image[0],
+							Image:     config.Image,
 							Command:   config.Command,
 							Lifecycle: config.Lifecycle,
 						},
@@ -612,7 +612,7 @@ func (config *RCConfig) create() error {
 					Containers: []v1.Container{
 						{
 							Name:           config.Name,
-							Image:          config.Image[0],
+							Image:          config.Image,
 							Command:        config.Command,
 							Ports:          []v1.ContainerPort{{ContainerPort: 80}},
 							ReadinessProbe: config.ReadinessProbe,
