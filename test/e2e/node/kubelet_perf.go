@@ -76,7 +76,7 @@ func runResourceTrackingTest(f *framework.Framework, podsPerNode int, nodeNames 
 		Client:    f.ClientSet,
 		Name:      rcName,
 		Namespace: f.Namespace.Name,
-		Image:     []string{imageutils.GetPauseImageName()},
+		Image:     imageutils.GetPauseImageName(),
 		Replicas:  totalPods,
 	})
 	framework.ExpectNoError(err)
