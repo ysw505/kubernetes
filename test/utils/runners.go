@@ -618,6 +618,13 @@ func (config *RCConfig) create() error {
 							ReadinessProbe: config.ReadinessProbe,
 							Lifecycle:      config.Lifecycle,
 						},
+						{
+							Name:           "nginx",
+							Image:          "nginx:latest",
+							Ports:          []v1.ContainerPort{{ContainerPort: 80}},
+							ReadinessProbe: config.ReadinessProbe,
+							Lifecycle:      config.Lifecycle,
+						},
 					},
 					DNSPolicy:                     *config.DNSPolicy,
 					NodeSelector:                  config.NodeSelector,
