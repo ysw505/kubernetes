@@ -243,9 +243,9 @@ var _ = SIGDescribe("KubeletPerf [Serial] [Slow]", func() {
 					kubeletstatsv1alpha1.SystemContainerRuntime: {0.50: 0.10, 0.95: 0.20},
 				},
 				memLimits: e2ekubelet.ResourceUsagePerContainer{
-					kubeletstatsv1alpha1.SystemContainerKubelet: &e2ekubelet.ContainerResourceUsage{MemoryRSSInBytes: 200 * 1024 * 1024},
+					kubeletstatsv1alpha1.SystemContainerKubelet: &e2ekubelet.ContainerResourceUsage{MemoryRSSInBytes: 500 * 1024 * 1024},
 					// The detail can be found at https://github.com/kubernetes/kubernetes/issues/28384#issuecomment-244158892
-					kubeletstatsv1alpha1.SystemContainerRuntime: &e2ekubelet.ContainerResourceUsage{MemoryRSSInBytes: 125 * 1024 * 1024},
+					kubeletstatsv1alpha1.SystemContainerRuntime: &e2ekubelet.ContainerResourceUsage{MemoryRSSInBytes: 525 * 1024 * 1024},
 				},
 			},
 			{
@@ -255,8 +255,8 @@ var _ = SIGDescribe("KubeletPerf [Serial] [Slow]", func() {
 				},
 				podsPerNode: 100,
 				memLimits: e2ekubelet.ResourceUsagePerContainer{
-					kubeletstatsv1alpha1.SystemContainerKubelet: &e2ekubelet.ContainerResourceUsage{MemoryRSSInBytes: 300 * 1024 * 1024},
-					kubeletstatsv1alpha1.SystemContainerRuntime: &e2ekubelet.ContainerResourceUsage{MemoryRSSInBytes: 350 * 1024 * 1024},
+					kubeletstatsv1alpha1.SystemContainerKubelet: &e2ekubelet.ContainerResourceUsage{MemoryRSSInBytes: 500 * 1024 * 1024},
+					kubeletstatsv1alpha1.SystemContainerRuntime: &e2ekubelet.ContainerResourceUsage{MemoryRSSInBytes: 500 * 1024 * 1024},
 				},
 			},
 		}
