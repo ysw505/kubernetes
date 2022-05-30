@@ -42,9 +42,9 @@ const (
 	// Interval to poll /stats/container on a node
 	containerStatsPollingPeriod = 10 * time.Second
 	// The monitoring time for one test.
-	monitoringTime = 20 * time.Minute
+	monitoringTime = 5 * time.Minute
 	// The periodic reporting period.
-	reportingPeriod = 5 * time.Minute
+	reportingPeriod = time.Minute
 )
 
 type resourceTest struct {
@@ -76,7 +76,7 @@ func runResourceTrackingTest(f *framework.Framework, podsPerNode int, nodeNames 
 		Client:    f.ClientSet,
 		Name:      rcName,
 		Namespace: f.Namespace.Name,
-		Image:     imageutils.GetPauseImageName(),
+		Image:     []string{imageutils.GetPauseImageName()},
 		Replicas:  totalPods,
 	})
 	framework.ExpectNoError(err)
@@ -194,7 +194,7 @@ func verifyCPULimits(expected e2ekubelet.ContainersCPUSummary, actual e2ekubelet
 }
 
 // Slow by design (1 hour)
-var _ = SIGDescribe("Kubelet [Serial] [Slow]", func() {
+var _ = SIGDescribe("KubeletPerf [Serial] [Slow]", func() {
 	var nodeNames sets.String
 	f := framework.NewDefaultFramework("kubelet-perf")
 	f.NamespacePodSecurityEnforceLevel = admissionapi.LevelPrivileged
